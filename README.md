@@ -22,7 +22,7 @@ bar stroke style.
 @State private var progress = 0.5
 
 var body: some View {
-  ConcaveProgressBar(value: $progress)
+  ConcaveProgressBar(value: progress)
     .barStyle(.init(lineWidth: 8, lineCap: .round, lineJoin: .round))
     .foreground(.red)
     .background(.gray)
