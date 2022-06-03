@@ -18,7 +18,15 @@ import SwiftUI
 /// You can customize the appearance of the concave progress view using the extension methods for
 /// `foreground`, `background`, `stroke` and `animation`.
 public struct ConcaveProgressBar: View {
-  @Binding var value: Float
+  var value: Float
+  
+  /// Create a progress view for showing the passed determinate progress.
+  ///
+  /// - parameters:
+  ///   - value: The current progress value.
+  public init<V: BinaryFloatingPoint>(value: V) {
+    self.value = Float(value)
+  }
   
   fileprivate var foreground = Color.accentColor
   fileprivate var background = Color.secondary.opacity(0.3)
@@ -100,7 +108,7 @@ fileprivate struct SemiCircle: Shape {
 // MARK: - Preview
 struct ProgressBar_Previews: PreviewProvider {
   static var previews: some View {
-    ConcaveProgressBar(value: .constant(0.6))
+    ConcaveProgressBar(value: 0.6)
       .barStyle(.init(lineWidth: 8, lineCap: .round, lineJoin: .round))
       .foreground(.red)
       .background(.gray)
